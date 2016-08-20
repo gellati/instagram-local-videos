@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Map</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+  <div id="page">
+
+    <input type="text" placeholder="Search by address..."" id="search" onClick>
+
+    <div id="search-results">
+    </div>
+
+    <div id="map"></div>
+
+  </div>
+
+  <div id="loading-overlay">Loading&#8230;</div>
+ 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.5/reqwest.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

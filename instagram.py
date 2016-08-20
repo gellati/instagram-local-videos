@@ -66,14 +66,14 @@ def inGet():
 
     
 @app.route('/get/location/search', methods=['GET'])
-def getIds():
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', '*')
-    
+def getIds():    
     lat = request.args.get('lat')
     lon = request.args.get('lon')
     ids = getNearbyRecentMediaByLatLon(lat, lon)
-    return jsonify(data = ids)
+    response = jsonify(data = ids)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', '*')
+    return response
 
 
 #    ids = getNearbyLocationIds(lat, lon)

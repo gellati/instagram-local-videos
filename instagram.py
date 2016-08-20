@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#from instagram.client import InstagramAPI
-
 import requests
 import json
 from flask import Flask, request, jsonify
@@ -13,7 +11,6 @@ client_secret = '715faafee65a4a7eb498c216adc72771'
 baseUrl = "https://api.instagram.com/v1"
 
 app = Flask(__name__)
-
 
 def getNearbyLocationIds(lat, lng):
     r = requests.get(baseUrl + "/locations/search?lat=" + lat + "&lng=" + lng + "&access_token=" + access_token)
@@ -70,6 +67,9 @@ def inGet():
     
 @app.route('/get/location/search', methods=['GET'])
 def getIds():
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', '*')
+    
     lat = request.args.get('lat')
     lon = request.args.get('lon')
     ids = getNearbyRecentMediaByLatLon(lat, lon)
@@ -89,17 +89,11 @@ def getIds():
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
 #        app.run(debug=True, host='0.0.0.0')
     
 
 
-
-lat = "60.4518"
-lon = "22.2666"
-
-lat = "48.858844"
-lon =  "2.294351"
 
 lat = "48"
 lon = "2"
@@ -109,25 +103,3 @@ print ids
 
 r = requests.get(baseUrl + "/locations/search?lat=48&lng=2&distance=500&access_token=" + access_token)
 
-
-#r = requests.get(baseUrl + "/nofilter/media/recent?access_token=" + access_token)
-
-
-
-#if(r.ok):
-#  print r.status_code
-#  print r.encoding
-#  print r.headers['content-type']
-#  print r.json()
-#  data = r.json
-#  data = json.loads(r.text)
-
-#  print data["data"]
-
-
-#  for d in data['data']:
-#      if d != '0':
-#          print d['id']
-                 
-
-          

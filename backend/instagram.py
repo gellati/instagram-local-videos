@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import requests
-import json
+import requests, json
 from flask import Flask, request, jsonify, make_response, current_app
 from datetime import timedelta
 from functools import update_wrapper
+#from Crossdomains import crossdomains
 
 access_token = '1555940494.e029fea.f4f3539e108d4079b960d11199a97a9f'
 client_secret = '715faafee65a4a7eb498c216adc72771'
@@ -100,7 +100,8 @@ def getNearbyRecentMediaByLatLon(lat, lng):
     
 @app.route('/', methods=['GET'])
 def helloWorld():
-    return 'hello'
+    return app.send_static_file('frontend/index.html')
+#    return 'hello'
 
 @app.route('/get/location', methods=['GET'])
 def inGet():
@@ -141,11 +142,11 @@ if __name__ == '__main__':
 
 
 
-lat = "48"
-lon = "2"
+#lat = "48"
+#lon = "2"
 
-ids = getNearbyLocationIds(lat, lon)
-print ids
+#ids = getNearbyLocationIds(lat, lon)
+#print ids
 
-r = requests.get(baseUrl + "/locations/search?lat=48&lng=2&distance=500&access_token=" + access_token)
+#r = requests.get(baseUrl + "/locations/search?lat=48&lng=2&distance=500&access_token=" + access_token)
 
